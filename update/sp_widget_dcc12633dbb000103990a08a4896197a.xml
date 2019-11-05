@@ -4,15 +4,19 @@
         <client_script><![CDATA[function() {
 	/* widget controller */
 	var c = this;
+	c.notePos = 0
+	
 	c.selectItem = function(idx) {
+		c.notePos = idx
 		var id = c.data.notes[idx].sys_id;
 		console.log('Note ID ' + id)
 		$rootScope.noteID = id;
 		$rootScope.$emit('selectNote', id)
 	}
 	$rootScope.$on('updateTitle', function(event, data) {
-		c.data.title = data.note.title
-		c.data.note = data.note.note
+		console.log(data)
+		c.data.notes[c.notePos].title = data.title;
+		c.data.notes[c.notePos].note = data.note;
 	})
 }]]></client_script>
         <controller_as>c</controller_as>
@@ -51,14 +55,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2019-11-05 21:09:28</sys_created_on>
         <sys_id>dcc12633dbb000103990a08a4896197a</sys_id>
-        <sys_mod_count>8</sys_mod_count>
+        <sys_mod_count>13</sys_mod_count>
         <sys_name>Notes List</sys_name>
         <sys_package display_value="CreateNotes" source="x_snc_createnotes">df5fd9a5090232007f44e1046c8ff69f</sys_package>
         <sys_policy/>
         <sys_scope display_value="CreateNotes">df5fd9a5090232007f44e1046c8ff69f</sys_scope>
         <sys_update_name>sp_widget_dcc12633dbb000103990a08a4896197a</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2019-11-05 22:32:57</sys_updated_on>
+        <sys_updated_on>2019-11-05 22:42:08</sys_updated_on>
         <template><![CDATA[<div class='panel pnael-default'>
   <div class='panel-heading clearfix'>
     <h3 class='panel-title pull-left'>
